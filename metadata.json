@@ -1,0 +1,6 @@
+{
+  "name": "SVCE Engineering Hub",
+  "description": "SVCE Bengaluru ECE & CSE Academic & Career Hub by M. Manoj: 1st to 8th semester autonomous syllabus, prescribed textbooks, curated chapter-wise YouTube classes, and verified student opportunities.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

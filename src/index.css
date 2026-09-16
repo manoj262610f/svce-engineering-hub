@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+/* Official Standard Academic & Engineering Portal Background Patterns */
+.bg-official-grid {
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bg-official-dots {
+  background-image: radial-gradient(rgba(100, 116, 139, 0.18) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-official-navy-grid {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bg-official-subtle-lines {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(15, 23, 42, 0.015),
+    rgba(15, 23, 42, 0.015) 1px,
+    transparent 1px,
+    transparent 12px
+  );
+}

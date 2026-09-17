@@ -89,7 +89,7 @@ export default function AboutSection({ onJoinWhatsApp, onOpenContribute }: About
               <div className="mt-4 p-3 rounded-xl bg-slate-50 border border-slate-200 text-[11px] text-slate-600 leading-relaxed flex items-start gap-2">
                 <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                 <p>
-                  <strong>Curated for Students:</strong> Independent peer-maintained repository coordinated with ECE student contributions to help batchmates access prescribed books, YouTube video modules, and verified job/internship openings.
+                  <strong>Curated for Students:</strong> Independent peer-maintained repository coordinated to help batchmates access verified job & internship openings, hackathons, skill certifications, and practical engineering projects.
                 </p>
               </div>
             </div>

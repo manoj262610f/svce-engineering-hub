@@ -155,9 +155,9 @@ export default function HeroSection({
       {/* Subtle technical background engineering markings */}
       <div className="absolute top-28 left-6 hidden lg:flex items-center gap-2 text-[10px] font-mono text-slate-400 select-none pointer-events-none">
         <span className="text-slate-500 font-bold">+</span>
-        <span>SYS.REF: SVCE-ACADEMIC-PORTAL</span>
+        <span>SYS.REF: SVCE-STUDENT-HUB</span>
         <span>|</span>
-        <span>AUTONOMOUS SCHEME • ECE & CSE</span>
+        <span>ENGINEERING & CAREER DIRECTORY</span>
       </div>
       <div className="absolute top-28 right-6 hidden lg:flex items-center gap-2 text-[10px] font-mono text-slate-400 select-none pointer-events-none">
         <span>CURATED BY M. MANOJ (1ST YEAR ECE)</span>
@@ -206,7 +206,7 @@ export default function HeroSection({
                 </h2>
                 
                 <p className="text-xs sm:text-sm text-slate-600 max-w-3xl mt-1 leading-relaxed">
-                  I’m a 1st-year B.Tech student in <strong>Electronics and Communication Engineering</strong> at <strong>Sri Venkateshwara College of Engineering (SVCE)</strong>, Bengaluru. I created this hub to bring together our complete autonomous syllabus for <strong>both ECE & CSE</strong> (1st to 8th Semester), prescribed reference textbooks with direct links, top chapter-wise YouTube lectures, and verified engineering opportunities.
+                  I’m a 1st-year B.Tech student in <strong>Electronics and Communication Engineering</strong> at <strong>Sri Venkateshwara College of Engineering (SVCE)</strong>, Bengaluru. I created SVCE Engineering Hub to share verified internships with stipends, hackathons, skill certifications, and engineering opportunities for fellow students.
                 </p>
               </div>
             </div>

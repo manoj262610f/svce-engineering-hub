@@ -1,8 +1,5 @@
 import { 
   ArrowRight, 
-  BookOpen, 
-  Cpu, 
-  Code2, 
   Briefcase, 
   Award, 
   Trophy, 
@@ -12,8 +9,8 @@ import {
 } from 'lucide-react';
 
 interface CategoryBridgeProps {
-  currentCategory: 'syllabus' | 'internships' | 'programs' | 'engineering' | 'projects' | 'resources';
-  onNavigateToCategory: (categoryId: string, dept?: 'ECE' | 'CSE', sem?: number) => void;
+  currentCategory: 'internships' | 'programs' | 'engineering' | 'projects' | 'resources';
+  onNavigateToCategory: (categoryId: string) => void;
   onOpenCategoryModal: () => void;
 }
 
@@ -24,53 +21,37 @@ export default function CategoryBridge({
 }: CategoryBridgeProps) {
   const bridgeLinks = [
     {
-      id: 'bridge-ece',
-      label: 'ECE Syllabus',
-      target: 'syllabus',
-      dept: 'ECE' as const,
-      icon: Cpu,
-      color: 'hover:border-amber-400',
-    },
-    {
-      id: 'bridge-cse',
-      label: 'CSE Syllabus',
-      target: 'syllabus',
-      dept: 'CSE' as const,
-      icon: Code2,
-      color: 'hover:border-cyan-400',
-    },
-    {
       id: 'bridge-internships',
       label: 'Internships',
-      target: 'internships',
+      target: 'internships' as const,
       icon: Briefcase,
       color: 'hover:border-blue-400',
     },
     {
       id: 'bridge-programs',
       label: 'Skill Programs',
-      target: 'programs',
+      target: 'programs' as const,
       icon: Award,
       color: 'hover:border-emerald-400',
     },
     {
       id: 'bridge-engineering',
       label: 'Hackathons',
-      target: 'engineering',
+      target: 'engineering' as const,
       icon: Trophy,
       color: 'hover:border-amber-400',
     },
     {
       id: 'bridge-projects',
       label: 'Mini Projects',
-      target: 'projects',
+      target: 'projects' as const,
       icon: Wrench,
       color: 'hover:border-purple-400',
     },
     {
       id: 'bridge-resources',
-      label: 'Study Notes & Tools',
-      target: 'resources',
+      label: 'Toolkits & Portals',
+      target: 'resources' as const,
       icon: FileText,
       color: 'hover:border-rose-400',
     },
@@ -85,10 +66,10 @@ export default function CategoryBridge({
           </div>
           <div>
             <h4 className="text-xs sm:text-sm font-bold text-slate-900">
-              One-in-All Hub • Jump to Other Categories
+              Explore More Categories
             </h4>
             <p className="text-[11px] text-slate-500">
-              Easily navigate syllabus, careers, projects, and learning materials
+              Easily navigate internships, hackathons, projects, and learning resources
             </p>
           </div>
         </div>
@@ -103,8 +84,8 @@ export default function CategoryBridge({
                 <button
                   key={item.id}
                   type="button"
-                  onClick={() => onNavigateToCategory(item.target, item.dept, 1)}
-                  className={`shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 ${item.color} transition-all active:scale-95`}
+                  onClick={() => onNavigateToCategory(item.target)}
+                  className={`shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 ${item.color} transition-all active:scale-95 cursor-pointer`}
                 >
                   <Icon className="w-3.5 h-3.5 text-slate-500" />
                   <span>{item.label}</span>
@@ -115,9 +96,9 @@ export default function CategoryBridge({
           <button
             type="button"
             onClick={onOpenCategoryModal}
-            className="shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-bold text-blue-900 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-colors"
+            className="shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-bold text-blue-900 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-colors cursor-pointer"
           >
-            <span>All (9)</span>
+            <span>All Categories</span>
             <ArrowRight className="w-3 h-3" />
           </button>
         </div>

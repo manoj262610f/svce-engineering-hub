@@ -30,51 +30,18 @@ import { STUDENT_INFO } from '../data/config';
 
 interface HeroSectionProps {
   onExploreClick: () => void;
-  onSyllabusClick: (dept?: 'ECE' | 'CSE', sem?: number) => void;
   onJoinWhatsApp?: () => void;
-  onCategoryClick?: (categoryId: string, dept?: 'ECE' | 'CSE', sem?: number) => void;
+  onCategoryClick?: (categoryId: string) => void;
   onOpenCategoryModal?: () => void;
 }
 
 export default function HeroSection({ 
   onExploreClick, 
-  onSyllabusClick, 
   onJoinWhatsApp,
   onCategoryClick,
   onOpenCategoryModal,
 }: HeroSectionProps) {
-  const semestersList = [1, 2, 3, 4, 5, 6, 7, 8];
-  const [navDept, setNavDept] = useState<'ECE' | 'CSE'>('ECE');
-
   const categories = [
-    {
-      id: 'ece-cat',
-      title: 'ECE Syllabus & Books',
-      desc: '1st to 8th Semester syllabus, prescribed textbooks with author links & chapter videos',
-      badge: 'Sem 1–8 • 40+ Books',
-      icon: Cpu,
-      color: 'text-amber-500',
-      bgColor: 'bg-[#0B1528]',
-      borderColor: 'border-amber-500/30',
-      action: () => {
-        if (onCategoryClick) onCategoryClick('syllabus', 'ECE', 1);
-        else onSyllabusClick('ECE', 1);
-      }
-    },
-    {
-      id: 'cse-cat',
-      title: 'CSE Syllabus & Books',
-      desc: '1st to 8th Semester CS courses: DSA, OS, DBMS, Networks, AI & Gate Smashers videos',
-      badge: 'Sem 1–8 • 40+ Books',
-      icon: Code2,
-      color: 'text-cyan-400',
-      bgColor: 'bg-indigo-950',
-      borderColor: 'border-cyan-400/30',
-      action: () => {
-        if (onCategoryClick) onCategoryClick('syllabus', 'CSE', 1);
-        else onSyllabusClick('CSE', 1);
-      }
-    },
     {
       id: 'internships-cat',
       title: 'Verified Internships',
@@ -105,7 +72,7 @@ export default function HeroSection({
     {
       id: 'hackathons-cat',
       title: 'Hackathons & Contests',
-      desc: 'Smart India Hackathon, Texas Instruments Innovation, KPIT Sparkle & campus fests',
+      desc: 'Smart India Hackathon, Texas Instruments Innovation, Bangalore hackathons & campus fests',
       badge: 'Cash Prizes & SIH',
       icon: Trophy,
       color: 'text-amber-700',
@@ -130,15 +97,41 @@ export default function HeroSection({
     },
     {
       id: 'resources-cat',
-      title: 'Study Notes & Tools',
-      desc: 'Autonomous question papers, formula sheets, component datasheets & simulators',
-      badge: 'VTU & Autonomous',
+      title: 'Study Notes & Toolkits',
+      desc: 'Formula cheat sheets, component datasheets, simulators, and resume blueprints',
+      badge: 'Engineering Hub',
       icon: FileText,
       color: 'text-rose-700',
       bgColor: 'bg-rose-50',
       borderColor: 'border-rose-200',
       action: () => {
         if (onCategoryClick) onCategoryClick('resources');
+      }
+    },
+    {
+      id: 'events-cat',
+      title: 'Technical Events & Fests',
+      desc: 'Bengaluru IEEE symposia, college tech fests, expert webinars & paper presentations',
+      badge: 'Seminars & Fests',
+      icon: LayoutGrid,
+      color: 'text-indigo-700',
+      bgColor: 'bg-indigo-50',
+      borderColor: 'border-indigo-200',
+      action: () => {
+        if (onCategoryClick) onCategoryClick('projects');
+      }
+    },
+    {
+      id: 'creator-cat',
+      title: 'About Manoj (Creator)',
+      desc: '1st Year B.Tech student at SVCE behind this portal, purpose, vision & direct profile',
+      badge: 'Creator Spotlight',
+      icon: User,
+      color: 'text-slate-800',
+      bgColor: 'bg-slate-100',
+      borderColor: 'border-slate-300',
+      action: () => {
+        if (onCategoryClick) onCategoryClick('about-creator');
       }
     },
     {
@@ -253,7 +246,7 @@ export default function HeroSection({
         </div>
 
         {/* =========================================================================
-            MAIN HERO SECTION (ECE & CSE PORTAL)
+            MAIN HERO SECTION (ENGINEERING OPPORTUNITIES & CAREER HUB)
             ========================================================================= */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
@@ -265,9 +258,9 @@ export default function HeroSection({
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-700"></span>
               </span>
-              <span className="text-slate-800 font-bold font-mono">SVCE BANGALORE • ACADEMIC HUB</span>
+              <span className="text-slate-800 font-bold font-mono">SVCE BANGALORE • STUDENT HUB</span>
               <span className="text-slate-300">•</span>
-              <span className="text-blue-800 font-bold">ECE & CSE (Sem 1 to 8)</span>
+              <span className="text-blue-800 font-bold">Engineering & Careers</span>
             </div>
 
             {/* Main heading */}
@@ -275,9 +268,9 @@ export default function HeroSection({
               id="hero-main-heading"
               className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-black text-slate-900 tracking-tight leading-[1.15] mb-5"
             >
-              ECE & CSE Syllabus, Textbooks &{" "}
+              Engineering Internships, Hackathons &{" "}
               <span className="text-blue-900 block sm:inline">
-                Curated Video Lectures.
+                Innovation Projects.
               </span>
             </h1>
 
@@ -286,39 +279,39 @@ export default function HeroSection({
               id="hero-subheading"
               className="text-sm sm:text-base md:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 mb-7 leading-relaxed font-normal"
             >
-              The definitive academic portal for <strong>Electronics & Communication Engineering (ECE)</strong> and <strong>Computer Science & Engineering (CSE)</strong> students at Sri Venkateshwara College of Engineering (SVCE), Bengaluru. Access complete 1st to 8th Semester curriculum, prescribed standard textbooks, and top-rated chapter-wise YouTube video classes.
+              The definitive opportunities and innovation portal for engineering students at <strong>Sri Venkateshwara College of Engineering (SVCE)</strong>, Bengaluru. Access verified internships with stipends, national and Bangalore tech hackathons, free industry certifications, and hardware/software lab project blueprints.
             </p>
 
-            {/* Action Buttons: Mobile Optimized for both ECE and CSE */}
+            {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 mb-8">
               <button
-                id="hero-ece-syllabus-btn"
-                type="button"
-                onClick={() => onSyllabusClick('ECE', 1)}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 min-h-[44px] rounded-xl text-sm font-bold text-white bg-blue-900 hover:bg-blue-950 border border-blue-950 shadow-xs transition-all active:scale-98"
-              >
-                <Cpu className="w-4 h-4 text-amber-400" />
-                <span>Explore ECE Syllabus</span>
-              </button>
-
-              <button
-                id="hero-cse-syllabus-btn"
-                type="button"
-                onClick={() => onSyllabusClick('CSE', 1)}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 min-h-[44px] rounded-xl text-sm font-bold text-slate-800 bg-white hover:bg-slate-50 border border-slate-300 shadow-xs transition-all active:scale-98"
-              >
-                <Code2 className="w-4 h-4 text-indigo-600" />
-                <span>Explore CSE Syllabus</span>
-              </button>
-
-              <button
-                id="hero-explore-btn"
+                id="hero-explore-internships-btn"
                 type="button"
                 onClick={onExploreClick}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 min-h-[44px] rounded-xl text-sm font-bold text-white bg-blue-900 hover:bg-blue-950 border border-blue-950 shadow-xs transition-all active:scale-98"
+              >
+                <Briefcase className="w-4 h-4 text-amber-400" />
+                <span>Explore Internships</span>
+              </button>
+
+              <button
+                id="hero-hackathons-btn"
+                type="button"
+                onClick={() => onCategoryClick ? onCategoryClick('engineering') : onExploreClick()}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 min-h-[44px] rounded-xl text-sm font-bold text-slate-800 bg-white hover:bg-slate-50 border border-slate-300 shadow-xs transition-all active:scale-98"
+              >
+                <Trophy className="w-4 h-4 text-amber-600" />
+                <span>Bangalore Hackathons</span>
+              </button>
+
+              <button
+                id="hero-programs-btn"
+                type="button"
+                onClick={() => onCategoryClick ? onCategoryClick('programs') : onExploreClick()}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-3.5 min-h-[44px] rounded-xl text-sm font-bold text-slate-600 hover:text-slate-900 bg-transparent hover:bg-slate-100 transition-all active:scale-98"
               >
-                <Compass className="w-4 h-4 text-blue-700" />
-                <span>Internships</span>
+                <Award className="w-4 h-4 text-emerald-600" />
+                <span>Free Certifications</span>
                 <ArrowRight className="w-4 h-4 text-slate-400" />
               </button>
             </div>
@@ -326,129 +319,149 @@ export default function HeroSection({
             {/* Quick stats pills */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-5 border-t border-slate-200">
               <div className="p-2.5 rounded-lg bg-white border border-slate-200 text-left">
-                <span className="text-[10px] text-slate-400 uppercase font-mono font-bold block">Departments</span>
-                <span className="text-sm font-black text-slate-900">ECE & CSE</span>
+                <span className="text-[10px] text-slate-400 uppercase font-mono font-bold block">Opportunities</span>
+                <span className="text-sm font-black text-slate-900">Verified Stipends</span>
               </div>
               <div className="p-2.5 rounded-lg bg-white border border-slate-200 text-left">
-                <span className="text-[10px] text-slate-400 uppercase font-mono font-bold block">Curriculum</span>
-                <span className="text-sm font-black text-blue-900">16 Semesters</span>
+                <span className="text-[10px] text-slate-400 uppercase font-mono font-bold block">Contests</span>
+                <span className="text-sm font-black text-amber-600">SIH & TI Fests</span>
               </div>
               <div className="p-2.5 rounded-lg bg-white border border-slate-200 text-left">
-                <span className="text-[10px] text-slate-400 uppercase font-mono font-bold block">Textbooks</span>
-                <span className="text-sm font-black text-emerald-800">80+ Standard Books</span>
+                <span className="text-[10px] text-slate-400 uppercase font-mono font-bold block">Upskilling</span>
+                <span className="text-sm font-black text-emerald-800">Free Credentials</span>
               </div>
               <div className="p-2.5 rounded-lg bg-white border border-slate-200 text-left">
-                <span className="text-[10px] text-slate-400 uppercase font-mono font-bold block">Video Classes</span>
-                <span className="text-sm font-black text-red-600">Chapter-Wise YT</span>
+                <span className="text-[10px] text-slate-400 uppercase font-mono font-bold block">Projects</span>
+                <span className="text-sm font-black text-blue-900">IoT, VLSI & Web</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Fast Department & Semester Jump Navigator */}
+          {/* Right Column: Quick Opportunities Launchpad Card */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
             <div
-              id="quick-semester-navigator"
+              id="quick-opportunity-navigator"
               className="w-full max-w-md bg-white rounded-xl p-5 border border-slate-300 shadow-xs border-t-4 border-t-blue-800"
             >
-              {/* Card Header with Department Selector */}
+              {/* Card Header */}
               <div className="flex items-center justify-between gap-2 pb-3.5 border-b border-slate-200">
                 <div className="flex items-center gap-2.5">
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center font-mono font-bold text-sm shadow-xs shrink-0 ${
-                    navDept === 'ECE' ? 'bg-[#0B1528] text-amber-400' : 'bg-indigo-900 text-cyan-300'
-                  }`}>
-                    {navDept}
+                  <div className="w-10 h-10 rounded-lg bg-[#0B1528] text-amber-400 flex items-center justify-center font-mono font-bold text-sm shadow-xs shrink-0">
+                    SVCE
                   </div>
                   <div>
                     <h3 className="text-sm font-bold text-slate-900">
-                      Fast Semester Navigator
+                      Career & Skills Launchpad
                     </h3>
                     <p className="text-xs text-slate-500">
-                      SVCE Autonomous Scheme
+                      Bengaluru Tech & Campus Track
                     </p>
                   </div>
                 </div>
 
-                {/* Branch Toggle in card */}
-                <div className="flex items-center p-0.5 bg-slate-100 rounded-lg border border-slate-200">
-                  <button
-                    type="button"
-                    onClick={() => setNavDept('ECE')}
-                    className={`px-2.5 py-1 text-xs font-bold rounded-md transition-all ${
-                      navDept === 'ECE'
-                        ? 'bg-blue-900 text-white shadow-2xs'
-                        : 'text-slate-600 hover:text-slate-900'
-                    }`}
-                  >
-                    ECE
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setNavDept('CSE')}
-                    className={`px-2.5 py-1 text-xs font-bold rounded-md transition-all ${
-                      navDept === 'CSE'
-                        ? 'bg-indigo-900 text-white shadow-2xs'
-                        : 'text-slate-600 hover:text-slate-900'
-                    }`}
-                  >
-                    CSE
-                  </button>
-                </div>
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
+                  LIVE UPDATES
+                </span>
               </div>
 
-              {/* Instant Semester Switcher Grid for Mobile/Desktop */}
-              <div className="py-4">
-                <p className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-wider mb-2.5 flex items-center justify-between">
-                  <span className="flex items-center gap-1.5">
-                    <Layers className="w-3.5 h-3.5 text-blue-700" />
-                    <span>Select {navDept} Semester:</span>
-                  </span>
-                  <span className="text-blue-800 font-bold">Sem 1–8</span>
-                </p>
+              {/* Quick Navigation Items */}
+              <div className="py-3.5 space-y-2">
+                <button
+                  type="button"
+                  onClick={() => onCategoryClick ? onCategoryClick('internships') : onExploreClick()}
+                  className="w-full flex items-center justify-between p-2.5 rounded-lg bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 transition-all text-left group"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-800 flex items-center justify-center">
+                      <Briefcase className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-slate-800 group-hover:text-blue-950">
+                        Bangalore & Remote Internships
+                      </p>
+                      <p className="text-[11px] text-slate-500">
+                        DRDO, ISRO, Bosch & Tech Startups
+                      </p>
+                    </div>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-blue-700 group-hover:translate-x-0.5 transition-transform" />
+                </button>
 
-                <div className="grid grid-cols-4 gap-2">
-                  {semestersList.map((sem) => (
-                    <button
-                      key={sem}
-                      type="button"
-                      onClick={() => onSyllabusClick(navDept, sem)}
-                      className="min-h-[44px] flex flex-col items-center justify-center p-2 rounded-lg bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 active:scale-95 transition-all text-center group"
-                    >
-                      <span className="text-[10px] font-mono font-semibold text-slate-400 group-hover:text-blue-700">
-                        {navDept}
-                      </span>
-                      <span className="text-sm font-black text-slate-800 group-hover:text-blue-950">
-                        Sem {sem}
-                      </span>
-                    </button>
-                  ))}
-                </div>
+                <button
+                  type="button"
+                  onClick={() => onCategoryClick ? onCategoryClick('engineering') : onExploreClick()}
+                  className="w-full flex items-center justify-between p-2.5 rounded-lg bg-slate-50 hover:bg-amber-50 border border-slate-200 hover:border-amber-300 transition-all text-left group"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center">
+                      <Trophy className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-slate-800 group-hover:text-amber-950">
+                        Hackathons & Competitions
+                      </p>
+                      <p className="text-[11px] text-slate-500">
+                        SIH, TI Innovation, Bengaluru Fests
+                      </p>
+                    </div>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-amber-700 group-hover:translate-x-0.5 transition-transform" />
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => onCategoryClick ? onCategoryClick('programs') : onExploreClick()}
+                  className="w-full flex items-center justify-between p-2.5 rounded-lg bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 transition-all text-left group"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center">
+                      <Award className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-slate-800 group-hover:text-emerald-950">
+                        Free Certified Skill Tracks
+                      </p>
+                      <p className="text-[11px] text-slate-500">
+                        Google Cloud, AWS, Cisco, NPTEL
+                      </p>
+                    </div>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-transform" />
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => onCategoryClick ? onCategoryClick('projects') : onExploreClick()}
+                  className="w-full flex items-center justify-between p-2.5 rounded-lg bg-slate-50 hover:bg-purple-50 border border-slate-200 hover:border-purple-300 transition-all text-left group"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-purple-100 text-purple-800 flex items-center justify-center">
+                      <Wrench className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-slate-800 group-hover:text-purple-950">
+                        Mini Projects & Hardware Labs
+                      </p>
+                      <p className="text-[11px] text-slate-500">
+                        IoT, VLSI, Robotics, AI Blueprints
+                      </p>
+                    </div>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-purple-700 group-hover:translate-x-0.5 transition-transform" />
+                </button>
               </div>
 
-              {/* Features checkmarks */}
-              <div className="space-y-2 pt-3 border-t border-slate-100 text-xs text-slate-600">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>Prescribed Textbooks with Authors & Editions</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>Chapter-by-Chapter Curated YouTube Video Classes</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>Gate Smashers, Abdul Bari, Neso Academy & More</span>
-                </div>
-              </div>
-
-              {/* Bottom fast button */}
-              <button
-                type="button"
-                onClick={() => onSyllabusClick(navDept, 1)}
-                className="w-full mt-4 min-h-[44px] py-2.5 px-4 rounded-lg bg-slate-900 hover:bg-black text-white text-xs font-bold flex items-center justify-center gap-2 transition-colors"
-              >
-                <Search className="w-3.5 h-3.5 text-amber-400" />
-                <span>Search {navDept} Syllabus, Books & Video Classes</span>
-              </button>
+              {/* Bottom search button */}
+              {onOpenCategoryModal && (
+                <button
+                  type="button"
+                  onClick={onOpenCategoryModal}
+                  className="w-full mt-2 min-h-[44px] py-2.5 px-4 rounded-lg bg-slate-900 hover:bg-black text-white text-xs font-bold flex items-center justify-center gap-2 transition-colors"
+                >
+                  <Search className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Search All Categories (Ctrl+K)</span>
+                </button>
+              )}
             </div>
           </div>
 
@@ -468,7 +481,7 @@ export default function HeroSection({
                 Quick Access to All Engineering Categories
               </h2>
               <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-2xl">
-                One centralized hub for SVCE students: jump straight to autonomous syllabus, textbooks, internships, free skill certifications, hackathons, and lab projects.
+                One centralized hub for SVCE students: jump straight to verified internships, free skill certifications, hackathons, technical events, and lab projects.
               </p>
             </div>
 

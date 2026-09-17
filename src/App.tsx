@@ -4,7 +4,6 @@ import CategoryQuickBar from './components/CategoryQuickBar';
 import CategorySwitcherModal from './components/CategorySwitcherModal';
 import CategoryBridge from './components/CategoryBridge';
 import HeroSection from './components/HeroSection';
-import SyllabusSection from './components/SyllabusSection';
 import InternshipsSection from './components/InternshipsSection';
 import ProgramsSection from './components/ProgramsSection';
 import EngineeringSection from './components/EngineeringSection';
@@ -29,8 +28,6 @@ export default function App() {
   const [opportunities] = useState<EngineeringOpportunityItem[]>(INITIAL_OPPORTUNITIES);
   const [projects] = useState(PROJECT_IDEAS);
   const [events] = useState(UPCOMING_EVENTS);
-  const [activeDepartment, setActiveDepartment] = useState<'ECE' | 'CSE'>('ECE');
-  const [activeSemester, setActiveSemester] = useState<number>(1);
 
   // Modal states
   const [activeDetailItem, setActiveDetailItem] = useState<
@@ -68,19 +65,7 @@ export default function App() {
     }
   };
 
-  const handleJumpToSemester = (dept: 'ECE' | 'CSE' = 'ECE', sem: number = 1) => {
-    setActiveDepartment(dept);
-    setActiveSemester(sem);
-    scrollToSection('syllabus');
-  };
-
-  const handleNavigateToCategory = (categoryId: string, dept?: 'ECE' | 'CSE', sem?: number) => {
-    if (dept) {
-      setActiveDepartment(dept);
-    }
-    if (sem) {
-      setActiveSemester(sem);
-    }
+  const handleNavigateToCategory = (categoryId: string) => {
     scrollToSection(categoryId);
   };
 
@@ -95,8 +80,6 @@ export default function App() {
 
       {/* Sticky All-in-One Category Quick Access Dock */}
       <CategoryQuickBar
-        activeDepartment={activeDepartment}
-        onSelectDepartmentAndSem={(dept, sem) => handleJumpToSemester(dept, sem)}
         onNavigateToSection={scrollToSection}
         onOpenCategoryModal={() => setIsCategoryModalOpen(true)}
         onOpenWhatsApp={() => setIsWhatsAppModalOpen(true)}
@@ -107,17 +90,8 @@ export default function App() {
         {/* Homepage Hero with Creator About Me Spotlight and All-in-One Category Directory */}
         <HeroSection
           onExploreClick={() => scrollToSection('internships')}
-          onSyllabusClick={handleJumpToSemester}
           onJoinWhatsApp={() => setIsWhatsAppModalOpen(true)}
           onCategoryClick={handleNavigateToCategory}
-          onOpenCategoryModal={() => setIsCategoryModalOpen(true)}
-        />
-
-        {/* Core Section: 1st to 8th Semester ECE & CSE Syllabus, Textbooks & Chapter Videos */}
-        <SyllabusSection
-          initialDepartment={activeDepartment}
-          initialSemester={activeSemester}
-          onNavigateToCategory={handleNavigateToCategory}
           onOpenCategoryModal={() => setIsCategoryModalOpen(true)}
         />
 

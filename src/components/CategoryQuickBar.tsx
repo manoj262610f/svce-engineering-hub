@@ -16,16 +16,12 @@ import {
 } from 'lucide-react';
 
 interface CategoryQuickBarProps {
-  activeDepartment: 'ECE' | 'CSE';
-  onSelectDepartmentAndSem: (dept: 'ECE' | 'CSE', sem: number) => void;
   onNavigateToSection: (sectionId: string) => void;
   onOpenCategoryModal: () => void;
   onOpenWhatsApp: () => void;
 }
 
 export default function CategoryQuickBar({
-  activeDepartment,
-  onSelectDepartmentAndSem,
   onNavigateToSection,
   onOpenCategoryModal,
   onOpenWhatsApp,
@@ -40,7 +36,6 @@ export default function CategoryQuickBar({
       const sectionIds = [
         'home',
         'about-creator',
-        'syllabus',
         'internships',
         'programs',
         'engineering',
@@ -67,30 +62,6 @@ export default function CategoryQuickBar({
 
   const categories = [
     {
-      id: 'cat-ece-bar',
-      label: 'ECE Syllabus',
-      icon: Cpu,
-      badge: 'Sem 1–8',
-      color: 'hover:text-amber-600',
-      action: () => {
-        onSelectDepartmentAndSem('ECE', 1);
-        onNavigateToSection('syllabus');
-      },
-      isActive: currentSection === 'syllabus' && activeDepartment === 'ECE',
-    },
-    {
-      id: 'cat-cse-bar',
-      label: 'CSE Syllabus',
-      icon: Code2,
-      badge: 'Sem 1–8',
-      color: 'hover:text-cyan-600',
-      action: () => {
-        onSelectDepartmentAndSem('CSE', 1);
-        onNavigateToSection('syllabus');
-      },
-      isActive: currentSection === 'syllabus' && activeDepartment === 'CSE',
-    },
-    {
       id: 'cat-internships-bar',
       label: 'Internships',
       icon: Briefcase,
@@ -112,7 +83,7 @@ export default function CategoryQuickBar({
       id: 'cat-hackathons-bar',
       label: 'Hackathons',
       icon: Trophy,
-      badge: 'SIH / TI',
+      badge: 'SIH / Bangalore',
       color: 'hover:text-amber-600',
       action: () => onNavigateToSection('engineering'),
       isActive: currentSection === 'engineering',
@@ -130,7 +101,7 @@ export default function CategoryQuickBar({
       id: 'cat-resources-bar',
       label: 'Resources',
       icon: FileText,
-      badge: 'Notes & VTU',
+      badge: 'Toolkits',
       color: 'hover:text-rose-600',
       action: () => onNavigateToSection('resources'),
       isActive: currentSection === 'resources',

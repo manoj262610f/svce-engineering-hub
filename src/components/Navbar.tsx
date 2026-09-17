@@ -17,7 +17,7 @@ export default function Navbar({ onOpenWhatsApp, onOpenContribute, onOpenCategor
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      const sections = ['home', 'about-creator', 'syllabus', 'internships', 'programs', 'engineering', 'projects', 'resources', 'about'];
+      const sections = ['home', 'about-creator', 'internships', 'programs', 'engineering', 'projects', 'resources', 'about'];
       const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
@@ -40,10 +40,9 @@ export default function Navbar({ onOpenWhatsApp, onOpenContribute, onOpenCategor
   const navLinks = [
     { name: 'Home', href: '#home', id: 'home' },
     { name: 'About Myself', href: '#about-creator', id: 'about-creator' },
-    { name: 'ECE & CSE Syllabus', href: '#syllabus', id: 'syllabus' },
-    { name: 'Opportunities', href: '#internships', id: 'internships' },
+    { name: 'Internships', href: '#internships', id: 'internships' },
     { name: 'Programs', href: '#programs', id: 'programs' },
-    { name: 'Engineering', href: '#engineering', id: 'engineering' },
+    { name: 'Hackathons', href: '#engineering', id: 'engineering' },
     { name: 'Projects & Events', href: '#projects', id: 'projects' },
     { name: 'Resources', href: '#resources', id: 'resources' },
     { name: 'About Desk', href: '#about', id: 'about' },
@@ -64,17 +63,17 @@ export default function Navbar({ onOpenWhatsApp, onOpenContribute, onOpenCategor
             </span>
             <span className="hidden md:inline text-slate-500">•</span>
             <span className="hidden md:inline text-slate-400">
-              Autonomous Institution • Depts. of ECE & CSE
+              Bengaluru • Student Innovation & Opportunities
             </span>
           </div>
           <div className="hidden sm:flex items-center gap-3 text-[10px] text-slate-400 font-mono">
             <span className="text-amber-400/90 font-semibold">SVCE BENGALURU</span>
             <span>|</span>
-            <span className="text-slate-300">AUTONOMOUS ECE & CSE CURRICULUM</span>
+            <span className="text-slate-300">STUDENT OPPORTUNITY PORTAL</span>
             <span>|</span>
             <span className="inline-flex items-center gap-1 text-emerald-400">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-              ACADEMIC REPOSITORY
+              VERIFIED DIRECTORY
             </span>
           </div>
         </div>
@@ -105,11 +104,11 @@ export default function Navbar({ onOpenWhatsApp, onOpenContribute, onOpenCategor
                     SVCE Engineering Hub
                   </span>
                   <span className="hidden md:inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-300/80 uppercase tracking-wide">
-                    Autonomous ECE & CSE
+                    Bengaluru
                   </span>
                 </div>
                 <p className="text-[11px] text-slate-500 font-medium hidden sm:block">
-                  Curriculum, Textbooks & Chapter Video Classes
+                  Internships, Hackathons & Tech Projects
                 </p>
               </div>
             </a>
@@ -208,8 +207,8 @@ export default function Navbar({ onOpenWhatsApp, onOpenContribute, onOpenCategor
             >
               <div className="px-3.5 py-2.5 bg-blue-50/90 rounded-xl border border-blue-200 flex items-center justify-between">
                 <div>
-                  <p className="text-xs font-bold text-blue-950">SVCE One-in-All Hub</p>
-                  <p className="text-[11px] text-blue-800">ECE & CSE Academic & Career Directory</p>
+                  <p className="text-xs font-bold text-blue-950">SVCE Student Hub</p>
+                  <p className="text-[11px] text-blue-800">Opportunities & Innovation Directory</p>
                 </div>
                 {onOpenCategoryModal && (
                   <button
@@ -225,27 +224,27 @@ export default function Navbar({ onOpenWhatsApp, onOpenContribute, onOpenCategor
                 )}
               </div>
 
-              {/* Group 1: Academics */}
+              {/* Quick Jump Buttons */}
               <div>
                 <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider block mb-1 px-1">
-                  Autonomous Academics
+                  Top Opportunities
                 </span>
                 <div className="grid grid-cols-2 gap-1.5">
                   <a
-                    href="#syllabus"
+                    href="#internships"
                     onClick={() => setIsOpen(false)}
                     className="p-2.5 rounded-lg border border-slate-200 bg-slate-50 hover:bg-blue-50 text-xs font-bold text-slate-800 flex items-center gap-2"
                   >
-                    <Cpu className="w-4 h-4 text-amber-500 shrink-0" />
-                    <span>ECE Syllabus (1-8)</span>
+                    <Briefcase className="w-4 h-4 text-blue-600 shrink-0" />
+                    <span>Internships</span>
                   </a>
                   <a
-                    href="#syllabus"
+                    href="#engineering"
                     onClick={() => setIsOpen(false)}
                     className="p-2.5 rounded-lg border border-slate-200 bg-slate-50 hover:bg-blue-50 text-xs font-bold text-slate-800 flex items-center gap-2"
                   >
-                    <Code2 className="w-4 h-4 text-cyan-500 shrink-0" />
-                    <span>CSE Syllabus (1-8)</span>
+                    <Trophy className="w-4 h-4 text-amber-600 shrink-0" />
+                    <span>Hackathons</span>
                   </a>
                 </div>
               </div>
